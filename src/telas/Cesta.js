@@ -1,9 +1,11 @@
 ﻿import React from 'react';
-import { StyleSheet, Image, Dimensions, Text } from 'react-native';
+import { StyleSheet, Image, Dimensions, Text, View } from 'react-native';
 
 // importando a imagem para encontrar a pasta dela tenho que dar
 // 'cd ..' duas vezes, por isso o '../../'
 import topo from '../../assets/topo.png';
+
+import logo from '../../assets/logo.png';
 
 // para pegar a dimensão 'width' atuais da tela
 const width = Dimensions.get('screen').width;
@@ -23,6 +25,25 @@ export default function Cesta() {
     return <>
         <Image source={topo} style={estilos.topo} />
         <Text style={estilos.titulo}>Detalhe da cesta</Text>
+
+        <View style={estilos.cesta}>
+            <Text style={estilos.nome}>Cesta de Verduras</Text>
+
+            {/* Nested View: eu criou uma <View> filha para que eu possa mudar
+            o layout dos elementos dentro dentro dela, sem precisar alterar os
+            elementos irmãos - View é como '<div>' na web */}
+            <View style={estilos.fazenda}>
+                <Image source={logo} style={estilos.imagemFazenda}/>
+                <Text style={estilos.nomeFazenda}>Jenny Jack Farm</Text>
+            </View>
+
+            <Text style={estilos.descricao}>
+                Uma cesta com produtos selecionados
+                cuidadosamente da faenda para
+                sua cozinha
+            </Text>
+            <Text style={estilos.preco}>R$ 40,00</Text>
+        </View>
     </>
 }
 
@@ -35,7 +56,7 @@ const estilos = StyleSheet.create({
         // Para uma altura responsiva da imagem:
         // (altura da imagem) / (largura da imagem) * largura atual da tela;
         // isso mantem a proporção entre altura x largura da imagem.
-        height: 578 / 768 * width, 
+        height: 578 / 768 * width,
     },
     titulo: {
         width: "100%",
@@ -45,8 +66,49 @@ const estilos = StyleSheet.create({
         lineHeight: 26,
         color: "white",
         fontWeight: "bold",
-        padding: 16
-    }
+        padding: 16,
+    },
+    cesta: {
+        paddingVertical: 8,
+        paddingHorizontal: 16,        
+    },
+    nome: {
+        color: "#464646",
+        fontSize: 26,
+        lineHeight: 42,
+        fontFamily: "MontserratBold",
+    },
+    fazenda: {
+
+        // 'flexDirection' muda a ordenação das coisas na tela;
+        // o default é "column", como eu queria colocar uma coisa do lado 
+        // da outra eu usei "row". Por padrão todos os elementos do React
+        // Native já são 'display: flex'.
+        flexDirection: "row",
+        paddingVertical: 12,
+    },
+    imagemFazenda: {
+        width: 32,
+        height: 32,
+    },
+    nomeFazenda: {
+        fontSize: 16,
+        lineHeight: 26,
+        marginLeft: 12,
+        fontFamily: "MontserratRegular",
+    },
+    descricao: {
+        color: "#A3A3A3",
+        fontSize: 16,
+        lineHeight: 26,
+    },
+    preco: {
+        color: "#2A9F85",
+        fontWeight: "bold",
+        fontSize: 26,
+        lineHeight: 42,
+        marginTop: 8,
+    },
 });
 
 // Nos primórdios do React Native, componentes com base em classes eram
@@ -69,5 +131,5 @@ const estilos = StyleSheet.create({
 
 // export default MeuComponente;
 
-// Porém, ela é bem menos usada, pois impossibilita a utilização de algumas 
+// Porém, ela é bem menos usada, pois impossibilita a utilização de algumas
 // funcionalidades recentes do React Native.
