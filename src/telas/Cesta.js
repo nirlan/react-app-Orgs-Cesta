@@ -1,10 +1,11 @@
 ﻿import React from 'react';
 import { StyleSheet, Image, Dimensions, Text, View } from 'react-native';
 
+import Texto from '../componentes/Texto';
+
 // importando a imagem para encontrar a pasta dela tenho que dar
 // 'cd ..' duas vezes, por isso o '../../'
 import topo from '../../assets/topo.png';
-
 import logo from '../../assets/logo.png';
 
 // para pegar a dimensão 'width' atuais da tela
@@ -24,25 +25,25 @@ export default function Cesta() {
     // que importa a Cesta.js).
     return <>
         <Image source={topo} style={estilos.topo} />
-        <Text style={estilos.titulo}>Detalhe da cesta</Text>
+        <Texto style={estilos.titulo}>Detalhe da cesta</Texto>
 
         <View style={estilos.cesta}>
-            <Text style={estilos.nome}>Cesta de Verduras</Text>
+            <Texto style={estilos.nome}>Cesta de Verduras</Texto>
 
             {/* Nested View: eu criou uma <View> filha para que eu possa mudar
             o layout dos elementos dentro dentro dela, sem precisar alterar os
             elementos irmãos - View é como '<div>' na web */}
             <View style={estilos.fazenda}>
-                <Image source={logo} style={estilos.imagemFazenda}/>
-                <Text style={estilos.nomeFazenda}>Jenny Jack Farm</Text>
+                <Image source={logo} style={estilos.imagemFazenda} />
+                <Texto style={estilos.nomeFazenda}>Jenny Jack Farm</Texto>
             </View>
 
-            <Text style={estilos.descricao}>
+            <Texto style={estilos.descricao}>
                 Uma cesta com produtos selecionados
-                cuidadosamente da faenda para
+                cuidadosamente da fazenda para
                 sua cozinha
-            </Text>
-            <Text style={estilos.preco}>R$ 40,00</Text>
+            </Texto>
+            <Texto style={estilos.preco}>R$ 40,00</Texto>
         </View>
     </>
 }
@@ -70,13 +71,13 @@ const estilos = StyleSheet.create({
     },
     cesta: {
         paddingVertical: 8,
-        paddingHorizontal: 16,        
+        paddingHorizontal: 16,
     },
     nome: {
         color: "#464646",
         fontSize: 26,
         lineHeight: 42,
-        fontFamily: "MontserratBold",
+        fontWeight: "bold",
     },
     fazenda: {
 
@@ -95,7 +96,6 @@ const estilos = StyleSheet.create({
         fontSize: 16,
         lineHeight: 26,
         marginLeft: 12,
-        fontFamily: "MontserratRegular",
     },
     descricao: {
         color: "#A3A3A3",
