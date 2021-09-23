@@ -5,7 +5,7 @@ import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-googl
 
 // 'import' do meu componente sem as chaves porque eu estou
 // importando o 'default'. Eu utilizo o nome da pasta que contém o 'index.js'
-// do componenente. O react reconhece automaticamente. Não há necessidade
+// do componente. O react reconhece automaticamente. Não há necessidade
 // de fazer '.src//telas/Cesta/Cesta' - fica feio o código.
 import Cesta from './src/telas/Cesta';
 
