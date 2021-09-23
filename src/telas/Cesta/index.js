@@ -1,15 +1,12 @@
 ﻿import React from 'react';
-import { StyleSheet, Image, Dimensions, View } from 'react-native';
+import { StyleSheet, Image, View } from 'react-native';
 
-import Texto from '../componentes/Texto';
+import Texto from '../../componentes/Texto';
+import Topo from './componentes/Topo';
 
 // importando a imagem para encontrar a pasta dela tenho que dar
 // 'cd ..' duas vezes, por isso o '../../'
-import topo from '../../assets/topo.png';
-import logo from '../../assets/logo.png';
-
-// para pegar a dimensão 'width' atuais da tela
-const width = Dimensions.get('screen').width;
+import logo from '../../../assets/logo.png';
 
 // Para que não precise usar as chaves para importar o meu componente
 // eu uso a palavra chave 'default'. Se eu não colocar o default, eu
@@ -24,9 +21,8 @@ export default function Cesta() {
     // eles, essa View que eu criei que seria a irmã da StatusBar (no App.js
     // que importa a Cesta.js).
     return <>
-        <Image source={topo} style={estilos.topo} />
-        <Texto style={estilos.titulo}>Detalhe da cesta</Texto>
-
+        <Topo />
+    
         <View style={estilos.cesta}>
             <Texto style={estilos.nome}>Cesta de Verduras</Texto>
 
@@ -50,25 +46,7 @@ export default function Cesta() {
 
 // StyleSheet é utilizado para criar os estilos em React Native;
 // é forma otimizada de criar os estilos do componenente.
-const estilos = StyleSheet.create({
-    topo: {
-        width: "100%",
-
-        // Para uma altura responsiva da imagem:
-        // (altura da imagem) / (largura da imagem) * largura atual da tela;
-        // isso mantem a proporção entre altura x largura da imagem.
-        height: 578 / 768 * width,
-    },
-    titulo: {
-        width: "100%",
-        position: "absolute",
-        textAlign: "center",
-        fontSize: 16,
-        lineHeight: 26,
-        color: "white",
-        fontWeight: "bold",
-        padding: 16,
-    },
+const estilos = StyleSheet.create({    
     cesta: {
         paddingVertical: 8,
         paddingHorizontal: 16,
