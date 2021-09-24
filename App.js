@@ -1,7 +1,11 @@
 import React from 'react';
 import { StatusBar, SafeAreaView, View } from 'react-native';
 
-import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import { useFonts, 
+	Montserrat_400Regular, 
+	Montserrat_700Bold, 
+} from '@expo-google-fonts/montserrat';
+import AppLoading from 'expo-app-loading';
 
 // 'import' do meu componente sem as chaves porque eu estou
 // importando o 'default'. Eu utilizo o nome da pasta que contém o 'index.js'
@@ -23,7 +27,9 @@ export default function App() {
 	// como a função App é chamada de forma recorrente por 'render()'
 	// ela retornará uma View vazia até que as fontes estejam carregadas
 	if (!fonteCarregada) {
-		return <View />;
+		
+		// permite que a splash screen seja mostrada enquanto o aplicativo está carregando
+		return <AppLoading />;
 	}
 
 	return (

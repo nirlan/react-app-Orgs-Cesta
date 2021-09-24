@@ -1,5 +1,5 @@
 ﻿// MOCKS são usados para evitar 'sujar' o código com informações fictícias
-// já que não temos um banco de dados ou uma API RESTfulpara fazer as 
+// já que não temos um banco de dados ou uma API RESTful para fazer as 
 // requisições. 
 
 // importando a imagem para encontrar a pasta dela tenho que dar
