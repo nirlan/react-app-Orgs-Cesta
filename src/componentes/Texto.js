@@ -16,7 +16,7 @@ export default function Texto({ children, style }) {
 
     // uso o estilo já definido na tag 'Texto' mais o estilo que eu defini
     // como argumentos do atributo style    
-    return <Text style={[style, estilo]}>{children}</Text>
+    return <Text style={[style, estilo]}>{ children }</Text>
 }
 
 const estilos = StyleSheet.create({

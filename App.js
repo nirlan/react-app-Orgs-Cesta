@@ -27,7 +27,7 @@ export default function App() {
 	// como a função App é chamada de forma recorrente por 'render()'
 	// ela retornará uma View vazia até que as fontes estejam carregadas
 	if (!fonteCarregada) {
-		
+
 		// permite que a splash screen seja mostrada enquanto o aplicativo está carregando
 		return <AppLoading />;
 	}
