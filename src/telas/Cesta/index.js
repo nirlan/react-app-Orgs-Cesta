@@ -1,9 +1,10 @@
 ﻿import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import Topo from './componentes/Topo';
 import Detalhes from './componentes/Detalhes';
-import Itens from './componentes/Itens';
+import Item from './componentes/Item';
+import Texto from '../../componentes/Texto';
 
 // Para que não precise usar as chaves para importar o meu componente
 // eu uso a palavra chave 'default'. Se eu não colocar o default, eu
@@ -17,23 +18,42 @@ export default function Cesta({ topo, detalhes, itens }) {
     // serão irmãos da StatusBar, se eu criasse uma View nova para conter
     // eles, essa View que eu criei que seria a irmã da StatusBar (no App.js
     // que importa a Cesta.js).
-    return <ScrollView>
-        {/* aqui eu descronstuo o objeto 'topo' e consigo acessar cada um dos
-        argumentos diretamente */}
-        <Topo {...topo} />
+    return <>
+        {/* 'FlatList' renderiza somente os componentes visíveis na tela */}
+        <FlatList
+            data={itens.lista}
+            renderItem={Item}
+            keyExtractor={({ nome }) => nome }
 
-        {/* Deixo essa 'View' aqui e não levo junto para 'Detalhes' porque
-        ela está estilizada com a margem comum a todos os componentes. */}
-        <View style={estilos.cesta}>
-            <Detalhes {...detalhes} />
-            <Itens {...itens}/>
-        </View>
-    </ScrollView>
+            // acrescenta os demais componentes que estão fora da lista na tela
+            ListHeaderComponent={() => {
+                return <>
+                    {/* aqui eu descronstuo o objeto 'topo' e consigo acessar cada um dos
+                    argumentos diretamente */}
+                    <Topo {...topo} />
+                     {/* Deixo essa 'View' aqui e não levo junto para 'Detalhes' porque
+                    ela está estilizada com a margem comum a todos os componentes. */}
+                    <View style={estilos.cesta}>
+                        <Detalhes {...detalhes} />
+                        <Texto style={estilos.titulo}>{ itens.titulo }</Texto>
+                    </View>                    
+                </>
+            }}          
+        />
+    </>
 }
 
 // StyleSheet é utilizado para criar os estilos em React Native;
 // é forma otimizada de criar os estilos do componenente.
 const estilos = StyleSheet.create({
+    titulo: {
+        color: "#464646",
+        fontWeight: "bold",
+        marginTop: 32,
+        marginBottom: 8,
+        fontSize: 20,
+        lineHeight: 32,
+    },
     cesta: {
         paddingVertical: 8,
         paddingHorizontal: 16,

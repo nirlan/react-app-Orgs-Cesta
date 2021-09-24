@@ -35,7 +35,9 @@ export default function App() {
 	return (
 		// importante para IOS para que o app respeite a statusbar e uma barra de
 		// ações que tem no footer do IOS. SafeAreaView substitui a View.
-		<SafeAreaView>
+		// 'flex: 1' faz com que a nossa view seja do tamanho da nossa tela
+		// sem carregar elementos não visíveis na tela
+		<SafeAreaView style={{ flex: 1 }}>
 			{/* deletar a StatusBar do expo e usar a StatusBar do react-native */}
 			<StatusBar />
 
