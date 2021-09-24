@@ -8,7 +8,7 @@ import Detalhes from './componentes/Detalhes';
 // eu uso a palavra chave 'default'. Se eu não colocar o default, eu
 // posso criar várias funções para exportar e importar no meu App.js
 // somente aquelas que eu quero usando o import com chaves '{...}'.
-export default function Cesta() {
+export default function Cesta({ topo, detalhes }) {
 
     // '<>...</> cria um fragmento sem a necessidade de criar uma View,
     // uma outra camada para retornar a função (porque a função só pode
@@ -17,12 +17,14 @@ export default function Cesta() {
     // eles, essa View que eu criei que seria a irmã da StatusBar (no App.js
     // que importa a Cesta.js).
     return <>
-        <Topo />
+        {/* aqui eu descronstuo o objeto 'topo' e consigo acessar cada um dos
+        argumentos diretamente */}
+        <Topo {...topo} />
 
         {/* Deixo essa 'View' aqui e não levo junto para 'Detalhes' porque
         ela está estilizada com a margem comum a todos os componentes. */}
         <View style={estilos.cesta}>
-            <Detalhes />
+            <Detalhes {...detalhes} />
         </View>
     </>
 }

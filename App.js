@@ -9,6 +9,9 @@ import { useFonts, Montserrat_400Regular, Montserrat_700Bold } from '@expo-googl
 // de fazer '.src//telas/Cesta/Cesta' - fica feio o código.
 import Cesta from './src/telas/Cesta';
 
+// importação dos mocks para povoar a 'Cesta'
+import mock from './src/mocks/cesta';
+
 export default function App() {
 
 	// utilizando Google Fonts
@@ -30,8 +33,10 @@ export default function App() {
 			{/* deletar a StatusBar do expo e usar a StatusBar do react-native */}
 			<StatusBar />
 
-			{/* meu componente */}
-			<Cesta />
+			{/* meu componente - Cesta
+			    '{...mock}' equivale a 'topo={mock.topo} detalhes={mock.detalhes}' 
+				'{...   }' desconstroi o objeto e passa os elementos diretamente */}
+			<Cesta {...mock} />
 		</SafeAreaView>
 	);
 }

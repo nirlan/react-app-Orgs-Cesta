@@ -3,31 +3,23 @@ import { View, StyleSheet, Image } from 'react-native';
 
 import Texto from '../../../componentes/Texto';
 
-// importando a imagem para encontrar a pasta dela tenho que dar
-// 'cd ..' duas vezes, por isso o '../../'
-import logo from '../../../../assets/logo.png';
-
-export default function Detalhes() {
+export default function Detalhes({ nome, logoFazenda, nomeFazenda, descricao, preco }) {
     return <>
-        <Texto style={estilos.nome}>Cesta de Verduras</Texto>
+        <Texto style={estilos.nome}>{ nome }</Texto>
 
         {/* Nested View: eu criou uma <View> filha para que eu possa mudar
         o layout dos elementos dentro dentro dela, sem precisar alterar os
         elementos irmãos - View é como '<div>' na web */}
         <View style={estilos.fazenda}>
-            <Image source={logo} style={estilos.imagemFazenda} />
-            <Texto style={estilos.nomeFazenda}>Jenny Jack Farm</Texto>
+            <Image source={logoFazenda} style={estilos.imagemFazenda} />
+            <Texto style={estilos.nomeFazenda}>{ nomeFazenda }</Texto>
         </View>
-        <Texto style={estilos.descricao}>
-            Uma cesta com produtos selecionados
-            cuidadosamente da fazenda para
-            sua cozinha
-        </Texto>
-        <Texto style={estilos.preco}>R$ 40,00</Texto>
+        <Texto style={estilos.descricao}>{ descricao }</Texto>
+        <Texto style={estilos.preco}>{ preco }</Texto>
     </>
 }
 
-const estilos = StyleSheet.create({    
+const estilos = StyleSheet.create({
     nome: {
         color: "#464646",
         fontSize: 26,
