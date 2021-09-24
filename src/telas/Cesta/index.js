@@ -1,14 +1,15 @@
 ﻿import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 import Topo from './componentes/Topo';
 import Detalhes from './componentes/Detalhes';
+import Itens from './componentes/Itens';
 
 // Para que não precise usar as chaves para importar o meu componente
 // eu uso a palavra chave 'default'. Se eu não colocar o default, eu
 // posso criar várias funções para exportar e importar no meu App.js
 // somente aquelas que eu quero usando o import com chaves '{...}'.
-export default function Cesta({ topo, detalhes }) {
+export default function Cesta({ topo, detalhes, itens }) {
 
     // '<>...</> cria um fragmento sem a necessidade de criar uma View,
     // uma outra camada para retornar a função (porque a função só pode
@@ -16,7 +17,7 @@ export default function Cesta({ topo, detalhes }) {
     // serão irmãos da StatusBar, se eu criasse uma View nova para conter
     // eles, essa View que eu criei que seria a irmã da StatusBar (no App.js
     // que importa a Cesta.js).
-    return <>
+    return <ScrollView>
         {/* aqui eu descronstuo o objeto 'topo' e consigo acessar cada um dos
         argumentos diretamente */}
         <Topo {...topo} />
@@ -25,8 +26,9 @@ export default function Cesta({ topo, detalhes }) {
         ela está estilizada com a margem comum a todos os componentes. */}
         <View style={estilos.cesta}>
             <Detalhes {...detalhes} />
+            <Itens {...itens}/>
         </View>
-    </>
+    </ScrollView>
 }
 
 // StyleSheet é utilizado para criar os estilos em React Native;

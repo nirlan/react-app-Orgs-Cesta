@@ -28,6 +28,9 @@ const cesta = {
     },
     itens: {
         titulo: "Itens da cesta",
+
+        // lista recebe uma array para que em index.js possa ser invocado
+        // o método 'map()' - exclusivo de array -  para povoar automaticamente toda a lista
         lista: [
           {
             nome: "Tomate",
