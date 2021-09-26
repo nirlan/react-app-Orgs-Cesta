@@ -48,3 +48,8 @@ export default function App() {
 		</SafeAreaView>
 	);
 }
+
+// # IMPORTANTE #
+// A FlatList como principal componente já faz o scroll da tela. E, definindo a 
+// view principal para ocupar 100% da tela com flex: 1 nos estilos, faz com que 
+// apenas os itens visíveis sejam carregados, otimizando assim a nossa aplicação.
